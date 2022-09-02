@@ -1,0 +1,77 @@
+﻿@model YourPortalDoctor.Areas.Doctor.Models.ViewModelPatientVisitRecord
+@{
+    Layout = "_LayoutDoctor";
+}
+
+
+
+<div class="page-wrapper">
+    <div class="content">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <h4 class="page-title">Patient Visit Record</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <form asp-action="SavePatientVistRecord" method="post" id="frmpatientdetails">
+                    <input type="hidden"asp-for="patientVisitRecord.PVR_ID" name="PVR_ID" />
+                    @*@{ 
+                        var mm = Model.patientVisitRecord.PVR_ID;
+                    }*@
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Patient Name<span class="text-danger">*</span></label>
+                            <select class="select" id="ddlsymtoms" asp-for="patientVisitRecord.PatientName" name="PatientName" as required placeholder="Select Below">
+
+                                @if (Model?.symptoms != null)
+                                {
+                                    @foreach (var item in Model.patientdetails)
+                                    {
+
+                                        <option value="@item.PatientId">@item.PatientName</option>
+                                    }
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Symptoms<span class="text-danger">*</span></label>
+                            <select class="select" id="ddlsymtoms" asp-for="patientVisitRecord.Symptom" name="Symptom" required placeholder="Select Below">
+
+                                @if (Model?.symptoms != null)
+                                {
+                                    @foreach (var item in Model.symptoms)
+                                    {
+
+                                        <option value="@item.SymptomsId">@item.SymptomsName</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 ">
+                        <div class="form-group">
+                            <label>Patient In Date <span class="text-danger">*</span></label>
+                            <input class="form-control" type="datetime-local" asp-for="patientVisitRecord.PatientIN_Date" name="PatientIN_Date" required />
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Patient Out Date <span class="text-danger">*</span></label>
+                            <input class="form-control" asp-for="patientVisitRecord.PatientOut_Date" name="PatientOut_Date" type="datetime-local" required />
+                        </div>
+                    </div>
+
+                    <br />
+                    <div class="col-sm-8">
+                        <button type="submit" class="btn btn-primary submit-btn">Submit</button>
+                        <button type="button" value="Cancel" class="btn btn-primary submit-btn" onclick="@("window.location.href='" + @Url.Action("ViewPatientVisitRecord", "Doctor") + "'");">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

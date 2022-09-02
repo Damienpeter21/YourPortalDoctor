@@ -1,0 +1,92 @@
+﻿@{
+    Layout = "_LayoutDoctor";
+}
+
+@model DataTable;
+<div class="page-wrapper">
+    <div class="content">
+        <div class="row">
+            <div class="col-sm-5 col-4">
+                <h4 class="page-title">Symptoms and Medicine Details</h4>
+            </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-12 text-right">
+                    <a href="~/AddMedications" class="btn btn-primary btn-rounded"><i class="fa fa-plus"></i> Add Symptoms and Medicines</a>
+                </div>
+                </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <table class="table table-striped custom-table datatable m-b-30">
+
+                            <thead >
+                                <tr>
+
+                                    <th class="text-center">SymptomName</th>
+                                    <th class="text-md-center">Medicines</th>
+                                  
+
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @foreach (DataRow Item in Model.Rows)
+                                {
+                                    <tr>
+                                        <td class="text-md-center">@Item[DBFields.Medicines.SymptomName]</td>
+                                        <td class="text-md-center">@Item[DBFields.Medicines.TabletSyrup]</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+
+                        @*Dosage Table*@
+
+                    </div>
+                </div>
+            </div>
+
+            <Br />
+            <div class="row mt-3">
+                <div class="col-sm-5 col-4">
+                    <h4 class="page-title">Age and Dosage Details</h4>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-12 text-right col-auto ">
+                    <a href="~/AddDosage" class="btn btn-primary btn-rounded"><i class="fa fa-plus"></i> Add Age and Dosage</a>
+                </div>
+            </div>
+            @*Dosage Table*@
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <table class="table table-striped custom-table datatable m-b-20">
+
+                            <thead style="text-align:center">
+
+                                <tr>
+                                    <th>Age</th>
+                                    <th>Dosage</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody style="text-align:center">
+                                @foreach (DataRow Item in Model.Rows)
+                                {
+                                    <tr>
+                                        <td>@Item[DBFields.Medicines.Age]</td>
+                                        <td>@Item[DBFields.Medicines.Dosage]</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>

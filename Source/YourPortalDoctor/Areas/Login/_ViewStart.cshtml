@@ -1,0 +1,15 @@
+﻿@{
+    var role = Context.Session.GetInt32("CurrentLayout");
+    if (role == 1)
+    {
+        Layout = "_LayoutDoctor";
+    }
+    else
+    {
+        Layout = "_LayoutPatient";
+    }
+
+}
+@{
+    Layout = "";
+}

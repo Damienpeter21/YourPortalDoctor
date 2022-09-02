@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\YPD_Demo.Common\YPD_Demo.Common.csproj" />
+    <ProjectReference Include="..\YPD_Demo.DBEngine\YPD_Demo.DBEngine.csproj" />
+    <ProjectReference Include="..\YRD.Demo.DBFramework\YRD.Demo.DBFramework.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="Common\" />
+    <Folder Include="wwwroot\js\" />
+  </ItemGroup>
+
+</Project>

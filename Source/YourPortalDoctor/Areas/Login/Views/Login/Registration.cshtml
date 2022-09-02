@@ -1,0 +1,119 @@
+﻿
+
+@model YourPortalDoctor.Areas.Login.Models.EntryCommanModel;
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <link rel="shortcut icon" type="image/x-icon" href="~/YRDMain/img/favicon.ico">
+    <title>YourPortalDoctor</title>
+    <link rel="stylesheet" type="text/css" href="~/YRDMain/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/YRDMain/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="~/YRDMain/css/style.css">
+    @*Validation CSS For Red Alert*@
+    <style>
+        .error {
+            color: red !important;
+            margin-left: 5px;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="main-wrapper  account-wrapper">
+        <div class="account-page">
+            <div class="account-center">
+                <div class="account-box">
+                    <div class="account-logo">
+                        <a href="~/Login"><img src="~/YRDMain/img/logo-dark.png" alt=""></a>
+                    </div>
+                    <form method="post" asp-action="SaveRegisterDetails" id="frmRegister">
+
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input type="text" asp-for="loginmodel.UserName" name="UserName" id="txtUserName" class="form-control" maxlength="20" placeholder="Enter UserName" required />
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" asp-for="loginmodel.Email" name="Email" id="mlEmail" class="form-control" maxlength="20" placeholder="Enter Email_ID" required />
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" asp-for="loginmodel.Password" name="Password" id="txtpassword" class="form-control" maxlength="8" placeholder="Enter Password" required />
+                        </div>
+                        <div class="form-group">
+                            <label>Mobile Number</label>
+                            <input type="text" asp-for="loginmodel.MobileNumber" name="MobileNumber" id="txtMobileNumber" class="form-control" maxlength="10" placeholder="Enter MobileNumber" required />
+                        </div>
+                        @*<div class="form-group checkbox">
+                            <label>
+                                <input type="checkbox"> I have read and agree the Terms & Conditions
+                            </label>
+                            </div>*@
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-primary account-btn">Signup</button>
+                        </div>
+                        <div class="text-center login-link">
+                            Already have an account? <a href="~/Login">Login</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="~/YRDMain/js/jquery-3.2.1.min.js"></script>
+    <script src="~/YRDMain/js/popper.min.js"></script>
+    <script src="~/YRDMain/js/bootstrap.min.js"></script>
+    <script src="~/YRDMain/js/jquery.slimscroll.js"></script>
+    <script src="~/YRDMain/js/app.js"></script>
+    @*validation*@
+    <script src="~/YRDMain/js/jquery.validate.js"></script>
+    <script src="~/YRDMain/js/jquery.validate.min.js"></script>
+</body>
+</html>
+@*Validation Script*@
+<script>
+    $(document).ready(function () {
+        $("#frmRegister").validate({
+            rules: {
+                "UserName": {
+                    required: true
+                },
+                "Email": {
+                    required: true
+                },
+                "Password": {
+                    required: true
+                },
+                "MobileNumber": {
+                    required: true
+                }
+            },
+            messages: {
+                "UserName": {
+                    required: "Please, Enter a User Name"
+                },
+                "Email": {
+                    required: "Please, Enter a Email ID"
+                },
+                "Password": {
+                    required: "Please, Enter a Password"
+                },
+                "MobileNumber": {
+                    required: "Please, Enter a MobileNumber"
+                }
+            }
+            //submitHandler: function (form)
+            //{ // for demo
+            //    //alert('valid form submitted');
+            //    return false; // for demo
+            //}
+        });
+
+    });
+</script>

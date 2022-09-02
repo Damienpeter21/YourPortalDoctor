@@ -1,0 +1,89 @@
+﻿@{
+    Layout = "_LayoutDoctor";
+}
+
+@model DataTable;
+<div class="page-wrapper">
+    <div class="content">
+        <div class="row">
+            <div class="col-sm-4 col-3">
+                <h4 class="page-title">Patient Details</h4>
+            </div>
+            <div class="col-sm-8 col-9 text-right m-b-20">
+                <a href="~/AddPatientDetail" class="btn btn btn-primary btn-rounded float-right"><i class="fa fa-plus"></i> Add Patient</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    @if (Model.Rows != null)
+                    {
+                        <table class="table table-border table-striped custom-table datatable mb-0 ">
+                            <thead>
+                                <tr>
+                                    <th class="text-md-center">Patient_Roll_No</th>
+                                    <th class="text-md-center">FirstName</th>
+                                    <th class="text-md-center">LastName</th>
+                                    <th class="text-md-center">Email</th>
+                                    <th class="text-md-center">DateofBirth</th>
+                                    <th class="text-md-center">BloodGroup</th>
+                                    <th class="text-md-center">Gender</th>
+                                    <th class="text-md-center">Address</th>
+                                    <th class="text-md-center">MobileNumber</th>
+                                    <th class="text-md-center">Status</th>
+                                    <th class="text-md-center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (DataRow Item in Model.Rows)
+                                {
+                                    <tr>
+                                        @*<td class="border px-4 py-2">
+                                <a class="" asp-route-PatientID="@Item[DBFields.PatientDetails.Patient_ID]" asp-controller="Doctor" asp-action="EditPatientDetails">
+                                    <i class="fa fa-edit" style="color:Highlight"></i>
+                                </a>
+                                <a asp-route-PatientID="@Item[DBFields.PatientDetails.Patient_ID]" asp-controller="Doctor" asp-action="DeletePatientDetails">
+                                    <i class="fa fa-trash" style="color:Highlight"></i>
+                                </a>
+                            </td>*@
+                                        <td>@Item[DBFields.PatientDetails.Patient_Roll_No]</td>
+                                        <td>@Item[DBFields.PatientDetails.FirstName]</td>
+                                        <td>@Item[DBFields.PatientDetails.LastName]</td>
+                                        <td>@Item[DBFields.PatientDetails.Email]</td>
+                                        <td>@Item[DBFields.PatientDetails.DateOfBirth]</td>
+                                        <td>@Item[DBFields.PatientDetails.BloodGroup]</td>
+                                        @*<td>@Item[DBFields.PatientDetails.Gender]</td>*@
+                                        <td>@(Item[DBFields.PatientDetails.Gender].ToString() @*== "True" ? "Female" : "Male"*@)</td>
+                                        <td>@Item[DBFields.PatientDetails.Address]</td>
+                                        <td>@Item[DBFields.PatientDetails.MobileNumber]</td>
+                                        @*<td>@Item[DBFields.PatientDetails.Status]</td>*@
+                                        <td>@(Item[DBFields.PatientDetails.Status].ToString() == "True" ? "Inactive" : "Active")</td>
+                                        <td>
+                                            <a class="" asp-route-PatientID="@Item[DBFields.PatientDetails.Patient_ID]" asp-controller="Doctor" asp-action="EditPatientDetails">
+                                                <i class="fa fa-edit  fa-lg" style="color:Highlight"></i>
+                                            </a>
+                                            @*<a class="dropdown-item"  asp-route-PatientID="@Item[DBFields.PatientDetails.Patient_ID]" asp-controller="Doctor" asp-action="DeletePatientDetails" data-toggle="modal" data-target="#delete_doctor">
+                                            <i class="fa fa-trash fa-lg" style="color:Highlight"></i> Delete</a>*@
+                                            <a asp-route-PatientID="@Item[DBFields.PatientDetails.Patient_ID]" asp-controller="Doctor" asp-action="DeletePatientDetails">
+                                                <i class="fa fa-trash fa-lg" style="color:Highlight"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+
+                        </table>
+                    }
+                    else
+                    {
+                        <div class="text-center">
+                            <h4 style="color:orangered">!!!  No record Founds  !!!</h4>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+﻿@{
+    Layout = "_LayoutDoctor";
+}
+@model YourPortalDoctor.Areas.Doctor.Models.PatientDetailsModels;
+<div class="page-wrapper">
+    <div class="content">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <h4 class="page-title">Add Dosage</h4>
+                <span Class="text-danger">(Make Sure Enter Correct Dosage....)</span>
+                <br /> <br />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <form asp-action="SaveAgeDetails">
+                    <div class="col-sm-12">
+                        <div class="show-basic-salary">
+                           
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label>Age<span class="text-danger">*</span></label>
+                                        <input class="form-control" type="text" asp-for="Age" name="Age" required>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label>Dosage<span class="text-danger">*</span></label>
+                                        <input class="form-control" type="text" asp-for="Dosage" name="Dosage" required>
+                                    </div>
+                                </div>
+                            
+                        </div>
+                    </div>
+          
+            <div class="m-t-30 text-center">
+                <button class="btn btn-primary submit-btn">Save</button>
+                <button type="button" value="Cancel" class="btn btn-primary submit-btn" onclick="@("window.location.href='" + @Url.Action("ViewMedications", "Doctor") + "'");">Cancel</button>
+            </div>
+         </form>
+           </div>
+        </div>
+     </div>
+</div>
