@@ -116,7 +116,8 @@ namespace YourPortalDoctor.Controllers
 
                 else
                 {
-                    return RedirectToAction("Signin");
+                    ViewBag.Message = "Invalid Username or Password";
+                    return View("Login");
 
                 }
 
